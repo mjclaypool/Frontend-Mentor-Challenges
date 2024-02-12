@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Frontend Mentor | FAQ accordion</title>
+
+  </head>
+  <body>
+    <section class='banner'></section>
+    <!-- Card Section -->
+    <section class="card">
+      <section class="heading">
+        <img class="star" src="./assets/images/icon-star.svg">
+        <h1>FAQs</h1>
+      </section>
+
+      <!-- Question 1 -->
+      <section class="question">
+        <section class="question-heading" id="q1" onclick="switchDisplay(id)">
+          <h2>What is Frontend Mentor, and how will it help me?</h2>
+
+          <img id="plus-q1" style="display: none" src="./assets/images/icon-plus.svg">
+          <img id="minus-q1" src="./assets/images/icon-minus.svg">
+        </section>
+
+        <p id="p-q1" style="display: flex">Frontend Mentor offers realistic coding challenges to help developers improve their 
+        frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for 
+        all levels and ideal for portfolio building.</p>
+      </section>
+
+      <!-- Question 2 -->
+      <section class="question">
+        <section class="question-heading" id="q2" onclick="switchDisplay(id)">
+          <h2>Is Frontend Mentor free?</h2>
+
+          <img id="plus-q2" src="./assets/images/icon-plus.svg">
+          <img id="minus-q2" style="display: none" src="./assets/images/icon-minus.svg">
+        </section>
+
+        <p id="p-q2">Yes, Frontend Mentor offers both free and premium coding challenges, with the free 
+        option providing access to a range of projects suitable for all skill levels.</p>
+      </section>
+
+      <!-- Question 3 -->
+      <section class="question">
+        <section class="question-heading" id="q3" onclick="switchDisplay(id)">
+          <h2>Can I use Frontend Mentor projects in my portfolio?</h2>
+
+          <img id="plus-q3" src="./assets/images/icon-plus.svg">
+          <img id="minus-q3" style="display: none" src="./assets/images/icon-minus.svg">
+        </section>
+
+        <p id="p-q3">Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+        way to showcase your skills to potential employers!</p>
+      </section>
+
+      <!-- Question 4 -->
+      <section class="question">
+        <section class="question-heading" id="q4" onclick="switchDisplay(id)">
+          <h2>How can I get help if I'm stuck on a Frontend Mentor challenge?</h2>
+
+          <img id="plus-q4" src="./assets/images/icon-plus.svg">
+          <img id="minus-q4" style="display: none" src="./assets/images/icon-minus.svg">
+        </section>
+
+        <p id="p-q4">The best place to get help is inside Frontend Mentor's Discord community. There's a help 
+        channel where you can ask questions and seek support from other community members.</p>
+      </section>
+    </section>
+
+    <!-- JavaScript Section -->
+    <script>
+      let prev_pID = 'p-q1';
+      let prev_plusID = 'plus-q1';
+      let prev_minusID = 'minus-q1';
+      switchDisplay = (Q) => {
+        // Store ID values from selected question.
+        let pID = 'p-' + Q;
+        let plusID = 'plus-' + Q;
+        let minusID = 'minus-' + Q;
+
+        if (prev_pID === pID && document.getElementById(pID).style.display !== 'none') {
+          // If user clicked an open accordian, close it.
+          document.getElementById(pID).style.display = 'none';
+          document.getElementById(plusID).style.display = 'flex';
+          document.getElementById(minusID).style.display = 'none';
+        } else {
+          // If user clicked a closed accordian, close previous and open new.
+          // Close previous accordian.
+          document.getElementById(prev_pID).style.display = 'none';
+          document.getElementById(prev_plusID).style.display = 'flex';
+          document.getElementById(prev_minusID).style.display = 'none';
+
+          // Open new accordian.
+          document.getElementById(pID).style.display = 'flex';
+          document.getElementById(plusID).style.display = 'none';
+          document.getElementById(minusID).style.display = 'flex';
+        }
+
+        // Save current state for future comparison.
+        prev_pID = pID;
+        prev_plusID = plusID;
+        prev_minusID = minusID;
+      }
+    </script>
+
+    <!-- Footer Section -->
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">MJClaypool</a>.
+    </div>
+  </body>
+</html>

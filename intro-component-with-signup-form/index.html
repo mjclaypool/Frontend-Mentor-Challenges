@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link rel="stylesheet" href="./style.css">
+  <title>Frontend Mentor | Intro component with sign up form</title>
+
+</head>
+<body>
+  <!-- Main Content Section -->
+  <section class="main-content">
+
+    <!-- Left Column, Description -->
+    <section class="description">
+      <h1>Learn to code by watching others</h1>
+      <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, 
+      but understanding how developers think is invaluable.</p>
+    </section>
+
+    <!-- Right Column, Form Field -->
+    <section class="form" id="form-id">
+      <section class="offer"><b>Try it free 7 days</b> then $20/mo. thereafter</section>
+      <form>
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" placeholder="First Name" required/>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" placeholder="Last Name" required/>
+
+        <label for="email-address">Email Address:</label>
+        <input type="email" id="email-address" placeholder="Email Address" required/>
+
+        <label for="password">Password: </label>
+        <input type="password" id="password" placeholder="Password" required/>
+
+        <button onclick="myValidation()">Claim your free trial</button>
+        <h6>By clicking the button, you are agreeing to our <strong>Terms and Services</strong></h6>
+      </form>
+    </section>
+  </section>
+
+  <!-- JavaScript Section -->
+  <script>
+    let myElement = document.getElementById('last-name');
+    myValidation = () => {
+      if (myElement.checkValidity() == false) {
+        myElement.style.borderColor = 'red';
+        }
+      }
+  </script>
+
+
+  <!-- Footer Section -->
+  <footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">MJClaypool</a>.
+    </p>
+  </footer>
+</body>
+</html>

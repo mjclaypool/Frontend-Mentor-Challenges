@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'League Spartan', sans-serif;
+    color: hsl(300, 43%, 22%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    width: 1100px;
+}
+
+.heading-section {
+    width: 450px;
+}
+
+.rating-section {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+}
+
+.rating-component {
+    display: flex;
+    width: 330px;
+    padding: 16px 24px;
+    margin: 15px 0;
+    border-radius: 8px;
+    background-color: hsl(300, 24%, 96%);
+}
+
+.review-section {
+    display: flex;
+    justify-content: space-between;
+    width: 1100px;
+    height: 250px;
+    padding: 30px;
+    gap: 30px;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: hsl(300, 43%, 22%);
+}
+
+.review-heading {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 56px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin-top: 25px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+h3.person {
+    font-weight: 500;
+    color: hsl(0, 0%, 100%);
+}
+
+h4 {
+    font-weight: 400;
+    margin-top: 5px;
+    color: hsl(333, 80%, 67%);
+}
+
+p {
+    font-weight: 400;
+    line-height: 1.3em;
+    margin-top: 20px;
+    color: hsl(0, 0%, 100%);
+}
+
+img.star {
+    height: 16px;
+    width: 16px;
+}
+
+img.avatar {
+    width: 3em;
+    border-radius: 1.5em;
+}
+
+.background-img-top {
+    background-image: url('./images/bg-pattern-top-desktop.svg');
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 60vw;
+    height: 60vh;
+    z-index: -1;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+.background-img-bottom {
+    background-image: url('./images/bg-pattern-bottom-desktop.svg');
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 90vw;
+    height: 90vh;
+    z-index: -1;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}

@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Outfit";
+    color: hsl(215, 51%, 70%);
+    font-size: 18px;
+    font-weight: 300;
+}
+
+body {
+    background-color: hsl(217, 54%, 11%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+section.card {
+    background-color: hsl(216, 50%, 16%);
+    border-radius: 16px;
+    padding: 30px;
+    width: 400px;
+}
+
+section.price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+section.creator {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: hsl(215, 51%, 70%);
+    padding-top: 20px;
+}
+
+img.product {
+    width: 100%;
+    border-radius: 8px;
+}
+
+img.avatar {
+    width: 40px;
+    border-style: solid;
+    border-color: aliceblue;
+    border-width: 2px;
+    border-radius: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+h2 {
+    color: hsl(178, 100%, 50%);
+}
+
+p {
+    font-size: 20px;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    margin: 20px 0;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+    font-size: 11px;
+}

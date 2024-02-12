@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'karla';
+}
+
+body {
+    background-image: url('./images/pattern-background-desktop.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+section.card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 16px;
+    width: 450px;
+}
+
+@media (max-width: 600px) {
+    section.card {
+        width: 90vw;
+    }
+}
+
+section.summary {
+    width: 80%;
+    margin: 30px auto 15px;
+    text-align: center;
+}
+
+section.component {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 25px auto;
+    padding: 20px;
+    background-color: #F8F9FE;
+    border-radius: 8px;
+}
+
+button.pay, button.cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    margin: 10px auto;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.pay {
+    background-color: #382AE1;
+    color: #EFF2FB;
+    filter: drop-shadow(0 20px 4px);
+}
+
+button.pay:hover {
+    background-color: hsl(224, 23%, 55%);
+}
+
+button.cancel {
+    background-color: white;
+    color: #707C94;
+}
+
+button.change {
+    background-color: #F8F9FE;
+    color: #382AE1;
+    border: none;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+button.change:hover {
+    color: hsl(224, 23%, 55%);
+}
+
+.attribution {
+    margin-top: 30px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+p {
+    color: #707C94;
+}
+
+img {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}

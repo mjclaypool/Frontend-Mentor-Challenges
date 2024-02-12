@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'karla';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+section.card {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 28px;
+    filter: drop-shadow(0 15px 15px #EAF0FC)
+}
+
+@media (max-width: 600px) {
+    section.result, section.summary {
+        flex: 100%;
+    }
+}
+
+section.result {
+    width: 50%;
+    background-color: #5C3DFA;
+    color: #BEB0F4;
+    text-align: center;
+    padding: 30px 40px;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+section.summary {
+    width: 50%;
+    padding: 30px;
+}
+
+section.bubble {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+section.reaction, section.memory, section.verbal, section.visual {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: ghostwhite;
+    border-radius: 8px;
+    margin: 15px 0;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+section.reaction {
+    color: #D45C59;
+    background-color: hsla(360, 100%, 80%, 0.1)
+}
+
+section.memory {
+    color: #E9B242;
+    background-color: hsla(54, 100%, 80%, 0.1)
+}
+
+section.verbal {
+    color: #5DB49F;
+    background-color: hsla(155, 60%, 80%, 0.1)
+}
+
+section.visual {
+    color: #232A91;
+    background-color: hsla(241, 100%, 80%, 0.1)
+}
+
+.attribution {
+    margin-top: 30px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+h1 {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+h1.congrats {
+    font-size: 32px;
+    color: white;
+}
+
+h2 {
+    font-size: 64px;
+    color: white;
+}
+
+h3.metric {
+    font-size: 16px;
+}
+
+p.score {
+    color: grey;
+}
+
+strong {
+    color: #303B59;
+}
+
+button {
+    font-size: 16px;
+    background-color: #303B59;
+    color: white;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5C3DFA;
+}

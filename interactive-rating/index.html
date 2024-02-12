@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass">
+
+  <link rel="stylesheet" href="./style.css">
+
+  <title>Frontend Mentor | Interactive rating component</title>
+
+</head>
+<body>
+
+  <!-- Rating Card -->
+  <section class="rating-card" id="rating">
+    <span>
+      <img class="star-icon" src="./images/icon-star.svg">
+    </span>
+    <h1>How did we do?</h1>
+
+    <p>Please let us know how we did with your support request. All feedback is appreciated
+    to help us improve our offering!</p>
+
+    <section class="rating-options">
+      <button type="button" id='1' onclick="updateSelection(id)">1</button>
+      <button type="button" id='2' onclick="updateSelection(id)">2</button>
+      <button type="button" id='3' onclick="updateSelection(id)">3</button>
+      <button type="button" id='4' onclick="updateSelection(id)">4</button>
+      <button type="button" id='5' onclick="updateSelection(id)">5</button>
+    </section>
+
+    <button type="button" class="submit" id="submit" onclick="switchCard()" disabled>Submit</button>
+  </section>
+
+
+  <!-- Thank-you Card -->
+  <section class="thank-you-card" id="thank-you" style="display:none;">
+    <img class="thank-you" src="./images/illustration-thank-you.svg">
+    <span id="user-selection">''</span>
+
+    <h1>Thank you!</h1>
+
+    <p>We appreciate you taking the time to give a rating. If you ever need more support,
+    don’t hesitate to get in touch!</p>
+  </section>
+
+
+   <!-- JavaScript code -->
+   <script>
+    let selection = '5';
+    updateSelection = (value) => {
+      document.getElementById(selection).style.backgroundColor = 'hsl(213, 19%, 25%)';
+      document.getElementById(selection).style.color = 'hsl(217, 12%, 63%)';
+      document.getElementById(value).style.backgroundColor = 'hsl(217, 12%, 63%)';
+      document.getElementById(value).style.color = 'hsl(0, 0%, 100%)';
+      selection = value;
+      document.getElementById('submit').disabled = false;
+      document.getElementById("user-selection").innerHTML = `You selected ${selection} out of 5`;
+    }
+    switchCard = () => {
+      document.getElementById('thank-you').style.display = 'flex';
+      document.getElementById('rating').style.display = 'none';
+    }
+  </script>
+
+
+  <!-- Footer Section -->
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">MJClaypool</a>.
+  </div>
+</body>
+</html>
