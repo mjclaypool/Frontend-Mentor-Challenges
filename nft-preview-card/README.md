@@ -36,16 +36,31 @@ Users should be able to:
 
 ### What I learned
 
---- In-progress ---
+I learned how to overlay an icon and a semi-transparent box over an image while hovering. Using the :hover pseudo-class, a view icon becomes fully opaque and a colored background appears over the main image while hovering over the region.
+
+```css
+img.view {
+    width: 50px;
+    height: 50px;
+    padding: 130px;
+    border-radius: 8px;
+    opacity: 0;
+}
+```
+```css
+img.view:hover {
+    background: rgba(0, 255, 247, 0.4);
+    opacity: 1.0;
+}
+```
 
 ### Continued development
 
---- In-progress ---
+Working to improve my use of flex and containers that resize their contents automatically with changes to the viewport.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [W3School - CSS Opacity / Transparency](https://www.w3schools.com/css/css_image_transparency.asp) - This helped me build a semi-transparent colored box without changing the opacity of the icon within it.
 
 ## Author
 
