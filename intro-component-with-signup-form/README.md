@@ -40,7 +40,23 @@ Users should be able to:
 
 ### What I learned
 
---- In-progress ---
+I learned how to use the checkValidity() method from JavaScript Validation API. For my form, I iterated over each of my input elements and attached error messages to the fields that were invalid.
+
+```js
+myValidation = () => {
+      for (var i=0; i < myElement.length; i++) {
+        myElement[i].style.borderColor = 'hsl(246, 25%, 77%)';
+        myElement[i].style.background = 'none';
+        myError[i].innerHTML = "";
+
+        if (myElement[i].checkValidity() == false) {
+          myElement[i].style.borderColor = 'red';
+          myElement[i].style.background = 'url(./images/icon-error.svg) no-repeat 410px center';
+          myError[i].innerHTML = myErrorMsg[i];
+          }
+        }
+      }
+```
 
 ### Continued development
 
