@@ -24,31 +24,67 @@
     <!-- Right Column, Form Field -->
     <section class="form" id="form-id">
       <section class="offer"><b>Try it free 7 days</b> then $20/mo. thereafter</section>
-      <form>
-        <label for="first-name">First Name:</label>
-        <input type="text" id="first-name" placeholder="First Name" required/>
+      <form id="form">
+        <fieldset>
+          <legend>Free Trail Sign-up</legend>
+          <label for="first-name" aria-label="required">First Name:</label>
+          <input id="first-name" type="text" placeholder="First Name" required/>
+          <span id="first-name-error"></span>
 
-        <label for="last-name">Last Name:</label>
-        <input type="text" id="last-name" placeholder="Last Name" required/>
+          <label for="last-name" aria-label="required">Last Name:</label>
+          <input id="last-name" type="text" placeholder="Last Name" required/>
+          <span id="last-name-error"></span>
 
-        <label for="email-address">Email Address:</label>
-        <input type="email" id="email-address" placeholder="Email Address" required/>
+          <label for="email-address" aria-label="required">Email Address:</label>
+          <input id="email-address" type="email" placeholder="Email Address" required/>
+          <span id="email-address-error"></span>
 
-        <label for="password">Password: </label>
-        <input type="password" id="password" placeholder="Password" required/>
+          <label for="password" aria-label="required">Password: </label>
+          <input id="password" type="password" placeholder="Password" required/>
+          <span id="password-error"></span>
 
-        <button onclick="myValidation()">Claim your free trial</button>
-        <h6>By clicking the button, you are agreeing to our <strong>Terms and Services</strong></h6>
+          <button type="submit" onclick="myValidation()">Claim your free trial</button>
+          <h6>By clicking the button, you are agreeing to our <strong>Terms and Services</strong></h6>
+        </fieldset>
       </form>
     </section>
   </section>
 
   <!-- JavaScript Section -->
   <script>
-    let myElement = document.getElementById('last-name');
+    myElement = [
+      document.getElementById('first-name'),
+      document.getElementById('last-name'),
+      document.getElementById('email-address'),
+      document.getElementById('password')
+    ];
+
+    myError = [
+      document.getElementById('first-name-error'),
+      document.getElementById('last-name-error'),
+      document.getElementById('email-address-error'),
+      document.getElementById('password-error')
+    ]
+
+    myErrorMsg = [
+      'First Name cannot be empty',
+      'Last Name cannot be empty',
+      'Looks like this is not an email',
+      'Password cannot be empty'
+    ]
+
     myValidation = () => {
-      if (myElement.checkValidity() == false) {
-        myElement.style.borderColor = 'red';
+      console.log('this is super annoying');
+      for (var i=0; i < myElement.length; i++) {
+        myElement[i].style.borderColor = 'hsl(246, 25%, 77%)';
+        myElement[i].style.background = 'none';
+        myError[i].innerHTML = "";
+
+        if (myElement[i].checkValidity() == false) {
+          myElement[i].style.borderColor = 'red';
+          myElement[i].style.background = 'url(./images/icon-error.svg) no-repeat 410px center';
+          myError[i].innerHTML = myErrorMsg[i];
+          }
         }
       }
   </script>

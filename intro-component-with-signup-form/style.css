@@ -47,12 +47,17 @@ section.form {
     filter: drop-shadow(0 6px 0px rgba(0, 0, 0, 0.15));
 }
 
-form {
+fieldset {
     display: flex;
     flex-direction: column;
     padding: 30px;
+    border: none;
     border-radius: 8px;
     background-color: white;
+}
+
+legend {
+    display: none;
 }
 
 label {
@@ -62,17 +67,12 @@ label {
 
 input {
     padding: 15px 30px;
-    margin-bottom: 20px;
     border: solid;
     border-color: hsl(246, 25%, 77%);
     border-width: 1px;
     color: hsl(249, 10%, 26%);
     border-radius: 4px;
     font-weight: bold;
-}
-
-input:valid {
-    border: 1px solid hsl(246, 25%, 77%);
 }
 
 button {
@@ -108,6 +108,14 @@ h6 {
 strong {
     color: hsl(0, 100%, 74%);
     cursor: pointer;
+}
+
+span {
+    text-align: right;
+    margin-bottom: 20px;
+    color: red;
+    font-size: 11px;
+    font-style: italic;
 }
 
 .attribution {
