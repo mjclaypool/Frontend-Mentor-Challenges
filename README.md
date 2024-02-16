@@ -23,6 +23,8 @@ Common design features across challenges include being able to:
 
 ### Screenshots
 
+![](./3-column-preview-card-component-main/design/Solution-Screenshot_3-column-preview-card-component.png)
+
 ![](./faq-accordion/design/Solution-Screenshot_FAQ-accordion.png)
 
 ![](./intro-component-with-signup-form/design/Solution-Screenshot_Intro-component-with-sign-up-form.png)

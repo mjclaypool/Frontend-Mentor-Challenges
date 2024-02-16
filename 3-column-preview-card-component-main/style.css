@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: hsl(0, 0%, 95%);
+}
+
+.main {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    max-width: 815px;
+    margin: 4em 1em;
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 2em;
+    gap: 1.5em;
+}
+
+#sedans {
+    background-color: hsl(31, 77%, 52%);
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+#suvs {
+    background-color: hsl(184, 100%, 22%);
+}
+
+#luxury {
+    background-color: hsl(179, 100%, 13%);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+h1 {
+    font-family: 'Big Shoulders Display';
+    font-size: 48px;
+    font-weight: 700;
+    color: hsl(0, 0%, 95%);
+}
+
+p {
+    font-family: 'Lexend Deca';
+    font-size: 15px;
+    font-weight: 400;
+    color: hsla(0, 0%, 100%, 0.75);
+    margin-bottom: 3em;
+}
+
+button {
+    font-family: 'Lexend Deca';
+    font-size: 15px;
+    background-color: hsl(0, 0%, 95%);
+    border-width: 2px;
+    border-style: solid;
+    border-color: hsl(0, 0%, 95%);
+    border-radius: 1.5em;
+    padding: .75em 1.5em;
+    cursor: pointer;
+}
+
+#btn-sedan {
+    color: hsl(31, 77%, 52%);
+}
+
+#btn-sedan:hover {
+    color: hsl(0, 0%, 95%);
+    background-color: hsl(31, 77%, 52%);
+}
+
+#btn-suv {
+    color: hsl(184, 100%, 22%);
+}
+
+#btn-suv:hover {
+    color: hsl(0, 0%, 95%);
+    background-color: hsl(184, 100%, 22%);
+}
+
+#btn-luxury {
+    color: hsl(179, 100%, 13%);
+}
+
+#btn-luxury:hover {
+    color: hsl(0, 0%, 95%);
+    background-color: hsl(179, 100%, 13%);
+}
+
+@media (max-width: 850px) {
+    body {
+        justify-content: flex-start;
+    }
+    .main {
+        flex-direction: column;
+        max-width: 300px;
+    }
+    #sedans {
+        border-top-right-radius: 1em;
+        border-bottom-left-radius: 0;
+    }
+    #luxury {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 1em;
+    }
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
