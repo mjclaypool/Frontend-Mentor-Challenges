@@ -3,38 +3,82 @@ import jsonData from "../../data.json";
 
 const FilterContext = createContext({
   data: [],
+  activeSearch: '',
+  activeRegion: '',
   filterAfrica: () => {},
   filterAmericas: () => {},
   filterAsia: () => {},
   filterEurope: () => {},
   filterOceania: () => {},
+  searchCountries: (userInput) => {},
 })
 
 function filterReducer(state, action) {
   if (action.type === "AFRICA") {
-    const filteredData = jsonData.filter((country) => country.region == "Africa");
+    var filteredData = [];
+    if (state.activeSearch == "" || state.activeSearch == undefined) {
+      filteredData = jsonData.filter((country) => country.region == "Africa");
+    } else {
+      filteredData = jsonData.filter((country) => country.region == "Africa");
+      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
+    }
 
-    return {...state, data: filteredData}
+    return {...state, data: filteredData, activeRegion: "Africa"}
   }
   if (action.type === "AMERICAS") {
-    const filteredData = jsonData.filter((country) => country.region == "Americas");
+    var filteredData = [];
+    if (state.activeSearch == "" || state.activeSearch == undefined) {
+      filteredData = jsonData.filter((country) => country.region == "Americas");
+    } else {
+      filteredData = jsonData.filter((country) => country.region == "Americas");
+      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
+    }
 
-    return {...state, data: filteredData}
+    return {...state, data: filteredData, activeRegion: "Americas"}
   }
   if (action.type === "ASIA") {
-    const filteredData = jsonData.filter((country) => country.region == "Asia");
+    var filteredData = [];
+    if (state.activeSearch == "" || state.activeSearch == undefined) {
+      filteredData = jsonData.filter((country) => country.region == "Asia");
+    } else {
+      filteredData = jsonData.filter((country) => country.region == "Asia");
+      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
+    }
 
-    return {...state, data: filteredData}
+    return {...state, data: filteredData, activeRegion: "Asia"}
   }
   if (action.type === "EUROPE") {
-    const filteredData = jsonData.filter((country) => country.region == "Europe");
+    var filteredData = [];
+    if (state.activeSearch == "" || state.activeSearch == undefined) {
+      filteredData = jsonData.filter((country) => country.region == "Europe");
+    } else {
+      filteredData = jsonData.filter((country) => country.region == "Europe");
+      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
+    }
 
-    return {...state, data: filteredData}
+    return {...state, data: filteredData, activeRegion: "Europe"}
   }
   if (action.type === "OCEANIA") {
-    const filteredData = jsonData.filter((country) => country.region == "Oceania");
+    var filteredData = [];
+    if (state.activeSearch == "" || state.activeSearch == undefined) {
+      filteredData = jsonData.filter((country) => country.region == "Oceania");
+    } else {
+      filteredData = jsonData.filter((country) => country.region == "Oceania");
+      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
+    }
 
-    return {...state, data: filteredData}
+    return {...state, data: filteredData, activeRegion: "Oceania"}
+  }
+  if (action.type === "SEARCH") {
+    var filteredData = [];
+    if (state.activeRegion == undefined) {
+      filteredData = jsonData.filter((country) => country.name.startsWith(action.userInput));
+    } else {
+      filteredData = jsonData.filter((country) => country.region == state.activeRegion);
+      filteredData = filteredData.filter((country) => country.name.startsWith(action.userInput));
+    }
+
+    return {...state, data: filteredData, activeSearch: action.userInput}
   }
 
   return state;
@@ -63,13 +107,20 @@ export function FilterContextProvider({children}) {
     dispatchFilterAction({ type: "OCEANIA" });
   }
 
+  function searchCountries(userInput) {
+    dispatchFilterAction({ type: "SEARCH", userInput })
+  }
+
   const filterContext = {
     data: filter.data,
+    activeSearch: filter.activeSearch,
+    activeRegion: filter.activeRegion,
     filterAfrica,
     filterAmericas,
     filterAsia,
     filterEurope,
     filterOceania,
+    searchCountries,
   };
 
   return <FilterContext.Provider value={filterContext}>{children}</FilterContext.Provider>
