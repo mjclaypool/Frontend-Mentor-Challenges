@@ -1,23 +1,22 @@
 import Header from './components/Header'
-import SearchBar from './components/SearchBar'
-import FilterBar from './components/FilterBar'
+import FilterSearch from './components/FilterSearch';
 import Countries from './components/Countries'
 import { CountryContextProvider } from './store/CountryContext';
 import { FilterContextProvider } from './store/FilterContext';
+import { DarkModeContextProvider } from './store/DarkModeContext';
 
 function App() {
 
   return (
-    <FilterContextProvider>
-      <CountryContextProvider>
-        <Header />
-        <div id="search-filter-region">
-          <SearchBar />
-          <FilterBar />
-        </div>
-        <Countries />
-      </CountryContextProvider>
-    </FilterContextProvider>
+    <DarkModeContextProvider>
+      <FilterContextProvider>
+        <CountryContextProvider>
+          <Header />
+          <FilterSearch />
+          <Countries />
+        </CountryContextProvider>
+      </FilterContextProvider>
+    </DarkModeContextProvider>
   )
 }
 

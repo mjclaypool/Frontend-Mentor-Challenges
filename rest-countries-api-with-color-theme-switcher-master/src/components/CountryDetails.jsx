@@ -1,8 +1,10 @@
 import { useContext } from "react"
 import CountryContext from "../store/CountryContext"
+import DarkModeContext from "../store/DarkModeContext";
 
 export default function CountryDetails() {
   const countryCtx = useContext(CountryContext);
+  const darkModeCtx = useContext(DarkModeContext);
 
   let topLevelDomainAsString = countryCtx.country.topLevelDomain[0];
   for (var i=1; i<countryCtx.country.topLevelDomain.length; i++) {
@@ -24,9 +26,18 @@ export default function CountryDetails() {
   }
 
   return (
-    <div id="country-details-section">
+    <div
+      id="country-details-section"
+      className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme-background` : `light-theme-background`}
+    >
       <div id="country-details-back-btn">
-        <button type="button" onClick={closeDetails}>Back</button>
+        <button
+          type="button"
+          className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme` : `light-theme`}
+          onClick={closeDetails}
+        >
+          Back
+        </button>
       </div>
       <div id="country-details">
         <img src={countryCtx.country.flags.png} id="country-details-flag" />
@@ -52,7 +63,7 @@ export default function CountryDetails() {
               <button
                 key={neighbor}
                 type="button"
-                className="country-details-border-btn"
+                className={darkModeCtx.mode == 'Dark Mode' ? `country-details-border-btn dark-theme` : `country-details-border-btn light-theme`}
               >
                 {neighbor}
               </button>
