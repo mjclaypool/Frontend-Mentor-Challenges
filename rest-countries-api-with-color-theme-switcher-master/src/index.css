@@ -85,8 +85,9 @@ select {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0 8rem;
-  height: 150px;
+  padding: 50px 8rem;
+  /* margin: 50px 0; */
+  /* height: 150px; */
 }
 
 #search-bar {
@@ -146,11 +147,11 @@ select {
 .card {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   background-color: hsl(209, 23%, 22%);
   width: 330px;
   height: 400px;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .flag {
@@ -162,6 +163,62 @@ select {
 
 .card-overview {
   padding: 0 2rem;
-  /* height: 200px; */
   margin: auto 0;
+}
+
+#country-details-section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 8rem;
+}
+
+#country-details-back-btn {
+  padding-bottom: 4rem;
+}
+
+#country-details-back-btn button{
+  padding: 0.5rem 2.5rem;
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 6px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+#country-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#country-details-main {
+  width: 45%;
+}
+
+#country-details-main h1 {
+  margin: 1rem 0;
+}
+
+#country-details-flag {
+  width: 45%;
+}
+
+#country-details-stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+#country-details-borders {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.country-details-border-btn {
+  font-size: 0.9rem;
+  padding: 0.4rem 1.6rem;
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 6px;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
 }
