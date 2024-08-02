@@ -130,6 +130,7 @@ select {
 
 #filter-regions {
   background-color: hsl(209, 23%, 22%);
+  border-radius: 6px;
 }
 
 #filter-label {
