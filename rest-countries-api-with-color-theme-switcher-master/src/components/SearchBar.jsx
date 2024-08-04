@@ -17,6 +17,10 @@ export default function SearchBar() {
     filterCtx.searchCountries(e.target.value);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
       {countryCtx.country == '' ?
@@ -25,7 +29,7 @@ export default function SearchBar() {
           className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme` : `light-theme`}
         >
           <FontAwesomeIcon icon={faMagnifyingGlass} id="search-bar-icon" />
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="search"
               id="search-input"

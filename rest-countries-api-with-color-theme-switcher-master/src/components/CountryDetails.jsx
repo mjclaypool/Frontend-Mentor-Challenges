@@ -21,8 +21,17 @@ export default function CountryDetails() {
     languagesAsString = languagesAsString + ", " + countryCtx.country.languages[i].name;
   }
 
+  let formattedPopulation = countryCtx.country.population.toString();
+  for (var i=formattedPopulation.length-3; i>0; i=i-3) {
+    formattedPopulation = formattedPopulation.substring(0,i) + "," + formattedPopulation.substring(i,formattedPopulation.length)
+  }
+
   function closeDetails() {
     countryCtx.hideCountry();
+  }
+
+  function handleSwitchToNeighbor(neighbor) {
+    countryCtx.showNeighbor(neighbor)
   }
 
   return (
@@ -46,7 +55,7 @@ export default function CountryDetails() {
           <div id="country-details-stats">
             <div className="country-details-column">
               <h3>Native Name: {countryCtx.country.nativeName}</h3>
-              <h3>Population: {countryCtx.country.population}</h3>
+              <h3>Population: {formattedPopulation}</h3>
               <h3>Region: {countryCtx.country.region}</h3>
               <h3>Sub Region: {countryCtx.country.subregion}</h3>
               <h3>Capital: {countryCtx.country.capital}</h3>
@@ -64,6 +73,7 @@ export default function CountryDetails() {
                 key={neighbor}
                 type="button"
                 className={darkModeCtx.mode == 'Dark Mode' ? `country-details-border-btn dark-theme` : `country-details-border-btn light-theme`}
+                onClick={() => handleSwitchToNeighbor(neighbor)}
               >
                 {neighbor}
               </button>
