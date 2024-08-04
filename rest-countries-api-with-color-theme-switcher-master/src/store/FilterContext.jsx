@@ -5,70 +5,23 @@ const FilterContext = createContext({
   data: [],
   activeSearch: '',
   activeRegion: '',
-  filterAfrica: () => {},
-  filterAmericas: () => {},
-  filterAsia: () => {},
-  filterEurope: () => {},
-  filterOceania: () => {},
+  filterRegion: (region) => {},
   searchCountries: (userInput) => {},
 })
 
 function filterReducer(state, action) {
-  if (action.type === "AFRICA") {
+  if (action.type === "REGION") {
     var filteredData = [];
     if (state.activeSearch == "" || state.activeSearch == undefined) {
-      filteredData = jsonData.filter((country) => country.region == "Africa");
+      filteredData = jsonData.filter((country) => country.region == action.region);
     } else {
-      filteredData = jsonData.filter((country) => country.region == "Africa");
+      filteredData = jsonData.filter((country) => country.region == action.region);
       filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
     }
 
-    return {...state, data: filteredData, activeRegion: "Africa"}
+    return {...state, data: filteredData, activeRegion: action.region}
   }
-  if (action.type === "AMERICAS") {
-    var filteredData = [];
-    if (state.activeSearch == "" || state.activeSearch == undefined) {
-      filteredData = jsonData.filter((country) => country.region == "Americas");
-    } else {
-      filteredData = jsonData.filter((country) => country.region == "Americas");
-      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
-    }
 
-    return {...state, data: filteredData, activeRegion: "Americas"}
-  }
-  if (action.type === "ASIA") {
-    var filteredData = [];
-    if (state.activeSearch == "" || state.activeSearch == undefined) {
-      filteredData = jsonData.filter((country) => country.region == "Asia");
-    } else {
-      filteredData = jsonData.filter((country) => country.region == "Asia");
-      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
-    }
-
-    return {...state, data: filteredData, activeRegion: "Asia"}
-  }
-  if (action.type === "EUROPE") {
-    var filteredData = [];
-    if (state.activeSearch == "" || state.activeSearch == undefined) {
-      filteredData = jsonData.filter((country) => country.region == "Europe");
-    } else {
-      filteredData = jsonData.filter((country) => country.region == "Europe");
-      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
-    }
-
-    return {...state, data: filteredData, activeRegion: "Europe"}
-  }
-  if (action.type === "OCEANIA") {
-    var filteredData = [];
-    if (state.activeSearch == "" || state.activeSearch == undefined) {
-      filteredData = jsonData.filter((country) => country.region == "Oceania");
-    } else {
-      filteredData = jsonData.filter((country) => country.region == "Oceania");
-      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
-    }
-
-    return {...state, data: filteredData, activeRegion: "Oceania"}
-  }
   if (action.type === "SEARCH") {
     var filteredData = [];
     if (state.activeRegion == undefined) {
@@ -87,24 +40,8 @@ function filterReducer(state, action) {
 export function FilterContextProvider({children}) {
   const [filter, dispatchFilterAction] = useReducer(filterReducer, { data: jsonData });
 
-  function filterAfrica() {
-    dispatchFilterAction({ type: "AFRICA" });
-  }
-
-  function filterAmericas() {
-    dispatchFilterAction({ type: "AMERICAS" });
-  }
-
-  function filterAsia() {
-    dispatchFilterAction({ type: "ASIA" });
-  }
-
-  function filterEurope() {
-    dispatchFilterAction({ type: "EUROPE" });
-  }
-
-  function filterOceania() {
-    dispatchFilterAction({ type: "OCEANIA" });
+  function filterRegion(region) {
+    dispatchFilterAction({ type: "REGION", region })
   }
 
   function searchCountries(userInput) {
@@ -115,11 +52,7 @@ export function FilterContextProvider({children}) {
     data: filter.data,
     activeSearch: filter.activeSearch,
     activeRegion: filter.activeRegion,
-    filterAfrica,
-    filterAmericas,
-    filterAsia,
-    filterEurope,
-    filterOceania,
+    filterRegion,
     searchCountries,
   };
 

@@ -11,6 +11,10 @@ export default function FilterBar() {
   const filterCtx = useContext(FilterContext);
   const darkModeCtx = useContext(DarkModeContext);
 
+  function handleChange(e) {
+    filterCtx.filterRegion(e.target.value);
+  }
+
   return (
     <>
       {countryCtx.country == '' ?
@@ -23,13 +27,15 @@ export default function FilterBar() {
                 name="filter-regions"
                 id="filter-regions"
                 className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme` : `light-theme`}
+                value={filterCtx.activeRegion}
+                onChange={handleChange}
               >
                 <option value="" id="filter-label">Filter by Region</option>
-                <option value="Africa" onClick={filterCtx.filterAfrica}>Africa</option>
-                <option value="America" onClick={filterCtx.filterAmericas}>America</option>
-                <option value="Asia" onClick={filterCtx.filterAsia}>Asia</option>
-                <option value="Europe" onClick={filterCtx.filterEurope}>Europe</option>
-                <option value="Oceania" onClick={filterCtx.filterOceania}>Oceania</option>
+                <option value="Africa">Africa</option>
+                <option value="Americas">America</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Oceania">Oceania</option>
               </select>
           </form>
           <FontAwesomeIcon icon={faAngleDown} id="filter-bar-icon" />
