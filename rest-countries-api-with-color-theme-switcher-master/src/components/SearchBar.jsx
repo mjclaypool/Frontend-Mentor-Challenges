@@ -18,24 +18,38 @@ export default function SearchBar() {
   }
 
   return (
-    <>
-      <div
-        id="search-bar"
-        className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme` : `light-theme`}
-      >
-        <FontAwesomeIcon icon={faMagnifyingGlass} id="search-bar-icon" />
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            id="search-input"
-            className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme` : `light-theme`}
-            placeholder='Search for a country...'
-            autoComplete='off'
-            value={filterCtx.activeSearch}
-            onChange={handleChange}
-          />
-        </form>
-      </div>
-    </>
+    <div
+      id="search-bar"
+      className={darkModeCtx.mode == 'Dark Mode' ?
+        `flex h-[50px] w-[100%] lg:w-[600px] rounded-md shadow-md
+        bg-dark-theme-elem text-dark-theme-txt`
+        :
+        `flex h-[50px] w-[100%] lg:w-[600px] rounded-md shadow-md
+        bg-light-theme-elem text-light-theme-txt`
+      }
+    >
+      <FontAwesomeIcon
+        id="search-bar-icon"
+        className="my-auto px-5"
+        icon={faMagnifyingGlass}
+      />
+      <form className="flex w-full h-full" onSubmit={handleSubmit}>
+        <input
+          type="search"
+          onChange={handleChange}
+          value={filterCtx.activeSearch}
+          placeholder='Search for a country...'
+          autoComplete='off'
+          id="search-bar-input"
+          className={darkModeCtx.mode == 'Dark Mode' ?
+            `font-nunito text-base border-none rounded-md w-full
+            bg-dark-theme-elem text-dark-theme-txt`
+            :
+            `font-nunito text-base border-none rounded-md w-full
+            bg-light-theme-elem text-light-theme-txt`
+          }
+        />
+      </form>
+    </div>
   )
 }

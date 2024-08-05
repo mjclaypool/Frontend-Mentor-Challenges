@@ -28,10 +28,6 @@ export default function CountryDetails() {
 
   }, [params.country])
 
-  let topLevelDomainAsString = "";
-  let currenciesAsString = "";
-  let languagesAsString = "";
-  let formattedPopulation = "";
 
   function formatBorders(borders) {
     let borderCodes = ''
@@ -42,7 +38,7 @@ export default function CountryDetails() {
   }
 
   function formatTLD() {
-    topLevelDomainAsString = data.tld[0];
+    let topLevelDomainAsString = data.tld[0];
     for (var i=1; i<data.tld.length; i++) {
       topLevelDomainAsString = topLevelDomainAsString + ", " + data.tld[i];
     }
@@ -51,6 +47,7 @@ export default function CountryDetails() {
 
   function formatCurr() {
     var currencies = Object.keys(data.currencies);
+    let currenciesAsString = ''
     if (currencies.length!=0){
       currenciesAsString = data.currencies[currencies[0]].name;
       for (var i=1; i<currencies.length; i++) {
@@ -62,7 +59,7 @@ export default function CountryDetails() {
 
   function formatLang() {
     var langs =  Object.keys(data.languages);
-    languagesAsString = data.languages[langs[0]];
+    let languagesAsString = data.languages[langs[0]];
     for (var i=1; i<langs.length; i++) {
       languagesAsString = languagesAsString + ", " + data.languages[langs[i]];
     }
@@ -70,7 +67,7 @@ export default function CountryDetails() {
   }
 
   function formatPop() {
-    formattedPopulation = data.population.toString();
+    let formattedPopulation = data.population.toString();
     for (var i=formattedPopulation.length-3; i>0; i=i-3) {
       formattedPopulation = formattedPopulation.substring(0,i) + "," + formattedPopulation.substring(i,formattedPopulation.length)
     }
@@ -81,52 +78,91 @@ export default function CountryDetails() {
   return (
     <div
       id="country-details-section"
-      className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme-background` : `light-theme-background`}
+      className={darkModeCtx.mode == 'Dark Mode' ?
+        `flex flex-col h-[92vh] px-8 md:px-16 lg:px-32
+        bg-dark-theme-bg text-dark-theme-txt`
+        :
+        `flex flex-col h-[92vh] px-32
+        bg-light-theme-bg text-light-theme-txt`}
     >
-      <div id="country-details-back-btn">
+      <div id="back-btn" className="py-16">
         <Link
           to="/"
-          type="button"
-          className={darkModeCtx.mode == 'Dark Mode' ? `dark-theme` : `light-theme`}
+          className={darkModeCtx.mode == 'Dark Mode' ?
+            `font-nunito text-base rounded-md shadow-md py-2 px-10 no-underline
+            bg-dark-theme-elem text-dark-theme-txt`
+            :
+            `font-nunito text-base rounded-md shadow-md py-2 px-10 no-underline
+            bg-light-theme-elem text-light-theme-txt`
+          }
         >
           Back
         </Link>
       </div>
       {!isLoading &&
-      <div id="country-details">
-        <img src={data.flags.png} id="country-details-flag" />
-        <div id="country-details-main">
-          <h1>{data.name.common}</h1>
-          <div id="country-details-stats">
-            <div className="country-details-column">
-              <h3>Official Name: {data.name.official}</h3>
-              <h3>Population: {formatPop()}</h3>
-              <h3>Region: {data.region}</h3>
-              <h3>Sub Region: {data.subregion}</h3>
-              <h3>Capital: {data.capital}</h3>
+        <div id="country-details" className="flex flex-col lg:flex-row gap-[10%] items-center">
+          <img
+            id="country-flag"
+            className="w-4/5 shadow-md md:w-3/5 lg:w-2/5"
+            src={data.flags.png}
+          />
+          <div id="country-content" className="w-4/5 my-8 md:w-3/5 lg:w-2/5">
+            <h1 id="country-name" className="font-nunito text-3xl my-4">
+              {data.name.common}
+            </h1>
+            <div id="country-stats" className="flex flex-col lg:flex-row gap-[5%] my-8">
+              <div className="mb-4 lg:mb-0">
+                <h3 id="country-official-name" className="font-nunito text-base my-1">
+                  Official Name: {data.name.official}
+                </h3>
+                <h3 id="country-population" className="font-nunito text-base my-1">
+                  Population: {formatPop()}
+                </h3>
+                <h3 id="country-region" className="font-nunito text-base my-1">
+                  Region: {data.region}
+                </h3>
+                <h3 id="country-subregion" className="font-nunito text-base my-1">
+                  Sub Region: {data.subregion}
+                </h3>
+                <h3 id="country-capital" className="font-nunito text-base my-1">
+                  Capital: {data.capital}
+                </h3>
+              </div>
+              <div>
+                <h3 id="country-tld" className="font-nunito text-base my-1">
+                  Top Level Domain: {formatTLD()}
+                </h3>
+                <h3 id="country-currencies" className="font-nunito text-base my-1">
+                  Currencies: {formatCurr()}
+                </h3>
+                <h3 id="country-languages" className="font-nunito text-base my-1">
+                  Languages: {formatLang()}
+                </h3>
+              </div>
             </div>
-            <div className="country-details-column">
-              <h3>Top Level Domain: {formatTLD()}</h3>
-              <h3>Currencies: {formatCurr()}</h3>
-              <h3>Languages: {formatLang()}</h3>
+            <div id="country-borders" className="flex flex-wrap items-center gap-3 my-8">
+              <h3 className="font-nunito text-base my-1">
+                Border Countries:
+              </h3>
+              {data.borders.length!=0 && borderData.map(neighbor => (
+                <Link
+                  to={`/${neighbor.name.common}`}
+                  key={neighbor.name.common}
+                  className={darkModeCtx.mode == 'Dark Mode' ?
+                    `font-nunito text-base rounded-md shadow-md py-1.5 px-6 no-underline
+                    bg-dark-theme-elem text-dark-theme-txt`
+                    :
+                    `font-nunito text-base rounded-md shadow-md py-1.5 px-6 no-underline
+                    bg-light-theme-elem text-light-theme-txt`
+                  }
+                >
+                  {neighbor.name.common}
+                </Link>
+              ))}
+              {data.borders.length==0 && <p>None</p>}
             </div>
-          </div>
-          <div id="country-details-borders">
-            <h3>Border Countries: </h3>
-            {data.borders.length!=0 && borderData.map(neighbor => (
-              <Link
-                to={`/${neighbor.name.common}`}
-                key={neighbor.name.common}
-                type="button"
-                className={darkModeCtx.mode == 'Dark Mode' ? `country-details-border-btn dark-theme` : `country-details-border-btn light-theme`}
-              >
-                {neighbor.name.common}
-              </Link>
-            ))}
-            {data.borders.length==0 && <p>None</p>}
           </div>
         </div>
-      </div>
       }
     </div>
   )
