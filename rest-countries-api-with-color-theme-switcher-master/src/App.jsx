@@ -1,20 +1,26 @@
-import { CountryContextProvider } from './store/CountryContext';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { FilterContextProvider } from './store/FilterContext';
 import { DarkModeContextProvider } from './store/DarkModeContext';
-import Header from './components/Header';
-import FilterSearch from './components/FilterSearch';
-import Countries from './components/Countries';
+import RootLayout from './pages/Root';
+import HomePage from './pages/HomePage';
+import CountryDetails from './components/CountryDetails';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { path: '/', element: <HomePage /> },
+      { path: '/:country', element: <CountryDetails /> },
+    ]
+  }
+])
 
 function App() {
-
   return (
     <DarkModeContextProvider>
       <FilterContextProvider>
-        <CountryContextProvider>
-          <Header />
-          <FilterSearch />
-          <Countries />
-        </CountryContextProvider>
+        <RouterProvider router={router} />
       </FilterContextProvider>
     </DarkModeContextProvider>
   )

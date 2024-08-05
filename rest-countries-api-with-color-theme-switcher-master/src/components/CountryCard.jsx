@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import CountryContext from "../store/CountryContext";
+import { Link } from "react-router-dom";
 import DarkModeContext from "../store/DarkModeContext";
 
+
 export default function CountryCard( {country} ) {
-  const countryCtx = useContext(CountryContext);
   const darkModeCtx = useContext(DarkModeContext);
 
   let formattedPopulation = country.population.toString();
@@ -11,22 +11,18 @@ export default function CountryCard( {country} ) {
     formattedPopulation = formattedPopulation.substring(0,i) + "," + formattedPopulation.substring(i,formattedPopulation.length)
   }
 
-  function handleChooseCountry(country) {
-    countryCtx.showCountry(country);
-  }
-
   return (
-    <div
+    <Link
+      to={`/${country.name.common}`}
       className={darkModeCtx.mode == 'Dark Mode' ? `card dark-theme` : `card light-theme`}
-      onClick={() => handleChooseCountry(country)}
     >
       <img className="flag" src={country.flags.png} />
       <div className="card-overview">
-        <h2>{country.name}</h2>
+        <h2>{country.name.common}</h2>
         <h3>Population: {formattedPopulation}</h3>
         <h3>Region: {country.region}</h3>
         <h3>Capital: {country.capital}</h3>
       </div>
-    </div>
+    </Link>
   )
 }

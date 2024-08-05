@@ -199,7 +199,7 @@ select {
   padding: 4rem 0;
 }
 
-#country-details-back-btn button {
+#country-details-back-btn a {
   padding: 0.5rem 2.5rem;
   border-radius: 6px;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
@@ -244,4 +244,5 @@ select {
   padding: 0.4rem 1.6rem;
   border-radius: 6px;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }

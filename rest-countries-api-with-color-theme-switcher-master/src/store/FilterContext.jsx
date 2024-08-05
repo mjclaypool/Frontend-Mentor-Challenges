@@ -1,8 +1,8 @@
-import { createContext, useReducer } from "react";
-import jsonData from "../../data.json";
+import { useState, useEffect, createContext, useReducer } from "react";
 
 const FilterContext = createContext({
   data: [],
+  visibleData: [],
   activeSearch: '',
   activeRegion: '',
   filterRegion: (region) => {},
@@ -10,35 +10,50 @@ const FilterContext = createContext({
 })
 
 function filterReducer(state, action) {
+  if (action.type === "INITIALIZE") {
+    return {...state, data: action.response, visibleData: action.response}
+  }
+
   if (action.type === "REGION") {
     var filteredData = [];
     if (state.activeSearch == "" || state.activeSearch == undefined) {
-      filteredData = jsonData.filter((country) => country.region == action.region);
+      filteredData = state.data.filter((country) => country.region == action.region);
     } else {
-      filteredData = jsonData.filter((country) => country.region == action.region);
-      filteredData = filteredData.filter((country) => country.name.startsWith(state.activeSearch));
+      filteredData = state.data.filter((country) => country.region == action.region);
+      filteredData = filteredData.filter((country) => country.name.common.startsWith(state.activeSearch));
     }
 
-    return {...state, data: filteredData, activeRegion: action.region}
+    return {...state, visibleData: filteredData, activeRegion: action.region}
   }
 
   if (action.type === "SEARCH") {
     var filteredData = [];
     if (state.activeRegion == undefined) {
-      filteredData = jsonData.filter((country) => country.name.startsWith(action.userInput));
+      filteredData = state.data.filter((country) => country.name.common.startsWith(action.userInput));
     } else {
-      filteredData = jsonData.filter((country) => country.region == state.activeRegion);
-      filteredData = filteredData.filter((country) => country.name.startsWith(action.userInput));
+      filteredData = state.data.filter((country) => country.region == state.activeRegion);
+      filteredData = filteredData.filter((country) => country.name.common.startsWith(action.userInput));
     }
 
-    return {...state, data: filteredData, activeSearch: action.userInput}
+    return {...state, visibleData: filteredData, activeSearch: action.userInput}
   }
 
   return state;
 };
 
 export function FilterContextProvider({children}) {
-  const [filter, dispatchFilterAction] = useReducer(filterReducer, { data: jsonData });
+  const [filter, dispatchFilterAction] = useReducer(filterReducer, { data: [], visibleData: [], activeSearch: '' });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() =>{fetch(`https://restcountries.com/v3.1/all?fields=name,population,region,capital,flags`, {})
+    .then((res) => res.json())
+    .then((response) => {
+      dispatchFilterAction({ type: "INITIALIZE", response});
+      setIsLoading(false);
+    })
+    .catch((error) => console.log(error));
+  },[])
+
 
   function filterRegion(region) {
     dispatchFilterAction({ type: "REGION", region })
@@ -50,6 +65,7 @@ export function FilterContextProvider({children}) {
 
   const filterContext = {
     data: filter.data,
+    visibleData: filter.visibleData,
     activeSearch: filter.activeSearch,
     activeRegion: filter.activeRegion,
     filterRegion,
