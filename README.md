@@ -23,6 +23,8 @@ Common design features across challenges include being able to:
 
 ### Screenshots
 
+![](./rest-countries-api-with-color-theme-switcher-master/design/case-study--country-picker-homepage-dark.png)
+
 ![](./3-column-preview-card-component-main/design/Solution-Screenshot_3-column-preview-card-component.png)
 
 ![](./faq-accordion/design/Solution-Screenshot_FAQ-accordion.png)
@@ -46,8 +48,11 @@ Common design features across challenges include being able to:
 ### Built with
 
 - Semantic HTML5
-- CSS
+- CSS custom properties
+- Flexbox
 - JavaScript
+- [React](https://reactjs.org/) - JS library
+- [Tailwind CSS](https://tailwindcss.com/) - For styles
 
 ### Useful resources
 
