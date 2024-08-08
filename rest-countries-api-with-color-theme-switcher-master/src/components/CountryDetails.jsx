@@ -82,7 +82,7 @@ export default function CountryDetails() {
         `flex flex-col h-[92vh] px-8 md:px-16 lg:px-32
         bg-dark-theme-bg text-dark-theme-txt`
         :
-        `flex flex-col h-[92vh] px-32
+        `flex flex-col h-[92vh] px-8 md:px-16 lg:px-32
         bg-light-theme-bg text-light-theme-txt`}
     >
       <div id="back-btn" className="py-16">

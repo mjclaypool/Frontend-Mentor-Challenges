@@ -22,7 +22,7 @@ export default function Countries() {
           `flex flex-col lg:flex-row lg:flex-wrap items-center justify-between gap-16
           bg-dark-theme-bg text-dark-theme-txt`
           :
-          `flex flex-col lg:flex-row flex-wrap justify-between gap-16
+          `flex flex-col lg:flex-row lg:flex-wrap items-center justify-between gap-16
           bg-light-theme-bg text-light-theme-txt`
         }
       >
