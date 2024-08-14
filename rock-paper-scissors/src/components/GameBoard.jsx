@@ -19,42 +19,55 @@ export default function GameBoard() {
     <div className="relative mx-auto">
       {showResults ?
         <>
-          <div className="flex gap-8 my-12">
-            <div>
+          <div className="flex items-center gap-8 lg:gap-24 my-12">
+            <div id="user-pick">
+              <h3 className="hidden lg:block font-barlow font-bold text-md lg:text-lg text-stone-100 my-6">YOU PICKED</h3>
               <Button type={playerPick} />
-              <h3 className="font-barlow font-bold text-md text-stone-100 my-6">YOU PICKED</h3>
+              <h3 className="lg:hidden font-barlow font-bold text-md lg:text-lg text-stone-100 my-6">YOU PICKED</h3>
             </div>
-            <div>
+            <div className="hidden lg:block">
+              <h2 className="font-barlow font-bold text-5xl text-stone-100">YOU {gameCtx.result}</h2>
+              <button
+                className="font-barlow font-bold py-3 px-12 mt-6 bg-stone-100 rounded-md"
+                onClick={() => setShowResults(false)}
+              >
+                PLAY AGAIN
+              </button>
+            </div>
+            <div id="house-pick">
+              <h3 className="hidden lg:block font-barlow font-bold text-md lg:text-lg text-stone-100 my-6">THE HOUSE PICKED</h3>
               <Button type={gameCtx.housePick} />
-              <h3 className="font-barlow font-bold text-md text-stone-100 my-6">THE HOUSE PICKED</h3>
+              <h3 className="lg:hidden font-barlow font-bold text-md lg:text-lg text-stone-100 my-6">THE HOUSE PICKED</h3>
             </div>
           </div>
-          <h2 className="font-barlow font-bold text-5xl text-stone-100">YOU {gameCtx.result}</h2>
-          <button
-            className="font-barlow font-bold py-3 px-12 mt-6 bg-stone-100 rounded-md"
-            onClick={() => setShowResults(false)}
-          >
-            PLAY AGAIN
-          </button>
+          <div className="lg:hidden">
+            <h2 className="font-barlow font-bold text-5xl text-stone-100">YOU {gameCtx.result}</h2>
+            <button
+              className="font-barlow font-bold py-3 px-12 mt-6 bg-stone-100 rounded-md"
+              onClick={() => setShowResults(false)}
+            >
+              PLAY AGAIN
+            </button>
+          </div>
         </>
       :
-        <div className="w-[200px]">
+        <div className="w-[200px] lg:w-[300px]">
           <img src={triangle} />
           <div
             onClick={() => handleClick('rock')}
-            className="absolute w-[140px] h-[140px] -bottom-[70px] inset-x-0 mx-auto"
+            className="absolute w-[140px] h-[140px] lg:w-[200px] lg:h-[200px] -bottom-[70px] lg:-bottom-[100px] inset-x-0 mx-auto"
           >
             <Button type="rock" />
           </div>
           <div
             onClick={() => handleClick('paper')}
-            className="absolute w-[140px] h-[140px] -top-[70px] -left-[70px]"
+            className="absolute w-[140px] h-[140px] lg:w-[200px] lg:h-[200px] -top-[70px] -left-[70px] lg:-top-[100px] lg:-left-[100px]"
           >
             <Button type="paper" />
           </div>
           <div
             onClick={() => handleClick('scissors')}
-            className="absolute w-[140px] h-[140px] -top-[70px] -right-[70px]"
+            className="absolute w-[140px] h-[140px] lg:w-[200px] lg:h-[200px] -top-[70px] -right-[70px] lg:-top-[100px] lg:-right-[100px]"
           >
             <Button type="scissors" />
           </div>
