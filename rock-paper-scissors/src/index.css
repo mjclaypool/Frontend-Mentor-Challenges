@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  padding: 0;
+}
+
+#game-background {
+  background-image: url(./assets/bg-triangle.svg);
+  background-repeat: no-repeat;
+}
